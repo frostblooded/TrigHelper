@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>141</width>
-    <height>259</height>
+    <width>140</width>
+    <height>255</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,104 +16,100 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>10</y>
-     <width>71</width>
-     <height>231</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_2"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_3"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_4"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_5"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_6"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_7"/>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_8"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
      <x>10</x>
      <y>10</y>
-     <width>43</width>
+     <width>121</width>
      <height>231</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>a:</string>
-      </property>
-     </widget>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>a:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>b:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>c:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>a1:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>b1:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>h:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>alpha:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>beta:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>b:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>c:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>a1:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>b1:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>h:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_7">
-      <property name="text">
-       <string>alpha:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_8">
-      <property name="text">
-       <string>beta:</string>
-      </property>
-     </widget>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLineEdit" name="a_display"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="b_display"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="c_display"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="a1_display"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="b1_display"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="h_display"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="alpha_display"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="beta_display"/>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

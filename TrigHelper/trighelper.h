@@ -16,23 +16,22 @@ public:
     ~TrigHelper();
 
 private slots:
-    void on_lineEdit_textChanged(const QString &arg1);
 
-    void on_lineEdit_2_textChanged(const QString &arg1);
+    void on_a_display_editingFinished();
 
-    void on_lineEdit_3_textChanged(const QString &arg1);
+    void on_b_display_editingFinished();
 
-    void on_lineEdit_4_textChanged(const QString &arg1);
+    void on_c_display_editingFinished();
 
-    void on_lineEdit_5_textChanged(const QString &arg1);
+    void on_a1_display_editingFinished();
 
-    void on_lineEdit_6_textChanged(const QString &arg1);
+    void on_b1_display_editingFinished();
 
-    void on_lineEdit_7_textChanged(const QString &arg1);
+    void on_h_display_editingFinished();
 
-    void on_lineEdit_8_textChanged(const QString &arg1);
+    void on_alpha_display_editingFinished();
 
-    void on_a_display_textChanged(const QString &arg1);
+    void on_beta_display_editingFinished();
 
 private:
     Ui::TrigHelper *ui;

@@ -32,6 +32,8 @@ private slots:
 
     void on_lineEdit_8_textChanged(const QString &arg1);
 
+    void on_a_display_textChanged(const QString &arg1);
+
 private:
     Ui::TrigHelper *ui;
     float a;
@@ -43,6 +45,14 @@ private:
     int alpha;
     int beta;
     void Calculate();
+    void CalculateA();
+    void CalculateB();
+    void CalculateC();
+    void CalculateA1();
+    void CalculateB1();
+    void CalculateH();
+    void CalculateAlpha();
+    void CalculateBeta();
     void Display();
 };
 

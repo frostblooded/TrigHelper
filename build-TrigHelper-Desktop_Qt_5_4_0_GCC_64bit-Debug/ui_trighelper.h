@@ -26,8 +26,8 @@ QT_BEGIN_NAMESPACE
 class Ui_TrigHelper
 {
 public:
-    QPushButton *calculate_button;
     QWidget *widget;
+    QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
@@ -47,23 +47,24 @@ public:
     QLineEdit *h_display;
     QLineEdit *alpha_display;
     QLineEdit *beta_display;
+    QPushButton *calculate_button;
 
     void setupUi(QWidget *TrigHelper)
     {
         if (TrigHelper->objectName().isEmpty())
             TrigHelper->setObjectName(QStringLiteral("TrigHelper"));
-        TrigHelper->resize(140, 289);
-        calculate_button = new QPushButton(TrigHelper);
-        calculate_button->setObjectName(QStringLiteral("calculate_button"));
-        calculate_button->setGeometry(QRect(20, 250, 99, 27));
+        TrigHelper->resize(140, 271);
         widget = new QWidget(TrigHelper);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 10, 121, 231));
-        horizontalLayout = new QHBoxLayout(widget);
+        widget->setGeometry(QRect(10, 10, 121, 251));
+        verticalLayout_3 = new QVBoxLayout(widget);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
@@ -157,6 +158,14 @@ public:
         horizontalLayout->addLayout(verticalLayout);
 
 
+        verticalLayout_3->addLayout(horizontalLayout);
+
+        calculate_button = new QPushButton(widget);
+        calculate_button->setObjectName(QStringLiteral("calculate_button"));
+
+        verticalLayout_3->addWidget(calculate_button);
+
+
         retranslateUi(TrigHelper);
 
         QMetaObject::connectSlotsByName(TrigHelper);
@@ -165,7 +174,6 @@ public:
     void retranslateUi(QWidget *TrigHelper)
     {
         TrigHelper->setWindowTitle(QApplication::translate("TrigHelper", "TrigHelper", 0));
-        calculate_button->setText(QApplication::translate("TrigHelper", "Calculate", 0));
         label->setText(QApplication::translate("TrigHelper", "a:", 0));
         label_2->setText(QApplication::translate("TrigHelper", "b:", 0));
         label_3->setText(QApplication::translate("TrigHelper", "c:", 0));
@@ -174,6 +182,7 @@ public:
         label_6->setText(QApplication::translate("TrigHelper", "h:", 0));
         label_7->setText(QApplication::translate("TrigHelper", "alpha:", 0));
         label_8->setText(QApplication::translate("TrigHelper", "beta:", 0));
+        calculate_button->setText(QApplication::translate("TrigHelper", "Calculate", 0));
     } // retranslateUi
 
 };

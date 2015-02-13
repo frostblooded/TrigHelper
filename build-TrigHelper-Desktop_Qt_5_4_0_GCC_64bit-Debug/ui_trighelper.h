@@ -17,6 +17,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -25,6 +26,7 @@ QT_BEGIN_NAMESPACE
 class Ui_TrigHelper
 {
 public:
+    QPushButton *calculate_button;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
@@ -50,7 +52,10 @@ public:
     {
         if (TrigHelper->objectName().isEmpty())
             TrigHelper->setObjectName(QStringLiteral("TrigHelper"));
-        TrigHelper->resize(140, 255);
+        TrigHelper->resize(140, 289);
+        calculate_button = new QPushButton(TrigHelper);
+        calculate_button->setObjectName(QStringLiteral("calculate_button"));
+        calculate_button->setGeometry(QRect(20, 250, 99, 27));
         widget = new QWidget(TrigHelper);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(10, 10, 121, 231));
@@ -160,6 +165,7 @@ public:
     void retranslateUi(QWidget *TrigHelper)
     {
         TrigHelper->setWindowTitle(QApplication::translate("TrigHelper", "TrigHelper", 0));
+        calculate_button->setText(QApplication::translate("TrigHelper", "Calculate", 0));
         label->setText(QApplication::translate("TrigHelper", "a:", 0));
         label_2->setText(QApplication::translate("TrigHelper", "b:", 0));
         label_3->setText(QApplication::translate("TrigHelper", "c:", 0));

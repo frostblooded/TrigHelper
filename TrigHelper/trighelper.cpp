@@ -80,58 +80,19 @@ void TrigHelper::Display()
     ui -> beta_display->setText(QString::number(beta));
 }
 
-void TrigHelper::on_a_display_editingFinished()
+
+
+void TrigHelper::on_calculate_button_clicked()
 {
     a = ui->a_display->text().toFloat();
-    Calculate();
-    Display();
-}
-
-void TrigHelper::on_b_display_editingFinished()
-{
     b = ui->b_display->text().toFloat();
-    Calculate();
-    Display();
-}
-
-void TrigHelper::on_c_display_editingFinished()
-{
     c = ui->c_display->text().toFloat();
-    Calculate();
-    Display();
-}
-
-void TrigHelper::on_a1_display_editingFinished()
-{
     a1 = ui->a1_display->text().toFloat();
-    Calculate();
-    Display();
-}
-
-void TrigHelper::on_b1_display_editingFinished()
-{
     b1 = ui->b1_display->text().toFloat();
-    Calculate();
-    Display();
-}
-
-void TrigHelper::on_h_display_editingFinished()
-{
     h = ui->h_display->text().toFloat();
-    Calculate();
-    Display();
-}
+    alpha = ui->alpha_display->text().toFloat();
+    beta = ui->beta_display->text().toFloat();
 
-void TrigHelper::on_alpha_display_editingFinished()
-{
-    alpha = ui->alpha_display->text().toInt();
-    Calculate();
-    Display();
-}
-
-void TrigHelper::on_beta_display_editingFinished()
-{
-    beta = ui->beta_display->text().toInt();
     Calculate();
     Display();
 }

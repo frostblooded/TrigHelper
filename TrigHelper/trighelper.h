@@ -33,6 +33,8 @@ private slots:
 
     void on_beta_display_editingFinished();
 
+    void on_calculate_button_clicked();
+
 private:
     Ui::TrigHelper *ui;
     float a;

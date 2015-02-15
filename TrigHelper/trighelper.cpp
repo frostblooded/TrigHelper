@@ -39,7 +39,9 @@ void TrigHelper::on_calculate_button_clicked()
     TrigCalculator::b1 = ui -> b1_display -> text().toFloat();
     TrigCalculator::h = ui -> h_display -> text().toFloat();
     TrigCalculator::alpha = ui -> alpha_display -> text().toFloat();
+    TrigCalculator::alpha_in_radians = TrigCalculator::alpha * M_PI / 180;
     TrigCalculator::beta = ui -> beta_display -> text().toFloat();
+    TrigCalculator::beta_in_radians = TrigCalculator::beta * M_PI / 180;
 
     TrigCalculator::Calculate();
     Display();

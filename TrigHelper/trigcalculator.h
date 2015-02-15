@@ -11,7 +11,9 @@ public:
     static double b1;
     static double h;
     static int alpha;
+    static double alpha_in_radians;
     static int beta;
+    static double beta_in_radians;
 
     static void Initialize();
     static void Calculate();

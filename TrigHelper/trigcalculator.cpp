@@ -8,7 +8,9 @@ double TrigCalculator::a1;
 double TrigCalculator::b1;
 double TrigCalculator::h;
 int TrigCalculator::alpha;
+double TrigCalculator::alpha_in_radians;
 int TrigCalculator::beta;
+double TrigCalculator::beta_in_radians;
 
 void TrigCalculator::Initialize()
 {
@@ -19,7 +21,9 @@ void TrigCalculator::Initialize()
     b1 = 0;
     h = 0;
     alpha = 0;
+    alpha_in_radians = 0;
     beta = 0;
+    beta_in_radians = 0;
 }
 
 double cotan(double num)
@@ -29,9 +33,8 @@ double cotan(double num)
 
 void TrigCalculator::Calculate()
 {
-    bool found_everything = false;
-
-    for(int i = 0; !found_everything; i++)
+    bool everything_found = false;
+    for(int i = 0; !everything_found; i++)
     {
         CalculateA();
         CalculateB();
@@ -44,245 +47,269 @@ void TrigCalculator::Calculate()
 
         if(a && b && c && a1 && b1 && h && alpha && beta)
         {
-            found_everything = true;
+            everything_found = true;
         }
     }
 }
 
 void TrigCalculator::CalculateA()
 {
-    if(b)
+    if(!a)
     {
-        if(alpha)
+        if(b)
         {
-            a = tan(alpha) * b;
+            if(alpha_in_radians)
+            {
+                a = tan(alpha_in_radians) * b;
+            }
+            else if(beta_in_radians)
+            {
+                a = cotan(beta_in_radians) * b;
+            }
         }
-        else if(beta)
+        else if(c)
         {
-            a = cotan(beta) * b;
+            if(alpha_in_radians)
+            {
+                a = sin(alpha_in_radians) * c;
+            }
+            else if(beta_in_radians)
+            {
+                a = cos(beta_in_radians) * c;
+            }
         }
-    }
-    else if(c)
-    {
-        if(alpha)
+        else if(a1)
         {
-            a = sin(alpha) * c;
+            if(alpha_in_radians)
+            {
+                a = a1 / sin(alpha_in_radians);
+            }
+            else if(beta_in_radians)
+            {
+                a = a1 / cos(beta_in_radians);
+            }
         }
-        else if(beta)
+        else if(h)
         {
-            a = cos(beta) * c;
-        }
-    }
-    else if(a1)
-    {
-        if(alpha)
-        {
-            a = a1 / sin(alpha);
-        }
-        else if(beta)
-        {
-            a = a1 / cos(beta);
-        }
-    }
-    else if(h)
-    {
-        if(alpha)
-        {
-            a = h / cos(alpha);
-        }
-        else if(beta)
-        {
-            a = h / sin(beta);
+            if(alpha_in_radians)
+            {
+                a = h / cos(alpha_in_radians);
+            }
+            else if(beta_in_radians)
+            {
+                a = h / sin(beta_in_radians);
+            }
         }
     }
 }
 
 void TrigCalculator::CalculateB()
 {
-    if(c)
+    if(!b)
     {
-        if(alpha)
+        if(c)
         {
-            b = cos(alpha) * c;
+            if(alpha_in_radians)
+            {
+                b = cos(alpha_in_radians) * c;
+            }
+            else if(beta_in_radians)
+            {
+                b = sin(beta_in_radians) * c;
+            }
         }
-        else if(beta)
+        else if(a)
         {
-            b = sin(beta) * c;
+            if(alpha_in_radians)
+            {
+                b = cotan(alpha_in_radians) * a;
+            }
+            else if(beta_in_radians)
+            {
+                b = tan(beta_in_radians) * a;
+            }
         }
-    }
-    else if(a)
-    {
-        if(alpha)
+        else if(h)
         {
-            b = cotan(alpha) * a;
+            if(alpha_in_radians)
+            {
+                b = h / sin(alpha_in_radians);
+            }
+            else if(beta_in_radians)
+            {
+                b = h / cos(beta_in_radians);
+            }
         }
-        else if(beta)
+        else if(b1)
         {
-            b = tan(beta) * a;
-        }
-    }
-    else if(h)
-    {
-        if(alpha)
-        {
-            b = h / sin(alpha);
-        }
-        else if(beta)
-        {
-            b = h / cos(beta);
-        }
-    }
-    else if(b1)
-    {
-        if(alpha)
-        {
-            b = b1 / cos(alpha);
-        }
-        else if(beta)
-        {
-            b = b1 / sin(beta);
+            if(alpha_in_radians)
+            {
+                b = b1 / cos(alpha_in_radians);
+            }
+            else if(beta_in_radians)
+            {
+                b = b1 / sin(beta_in_radians);
+            }
         }
     }
 }
 
 void TrigCalculator::CalculateC()
 {
-    if(a)
+    if(!c)
     {
-        if(alpha)
+        if(a)
         {
-            c = a / sin(alpha);
+            if(alpha_in_radians)
+            {
+                c = a / sin(alpha_in_radians);
+            }
+            else if(beta_in_radians)
+            {
+                c = a / cos(beta_in_radians);
+            }
         }
-        else if(beta)
+        else if(b)
         {
-            c = a / cos(beta);
-        }
-    }
-    else if(b)
-    {
-        if(alpha)
-        {
-            c = b / cos(alpha);
-        }
-        else if(beta)
-        {
-            c = b / sin(beta);
+            if(alpha_in_radians)
+            {
+                c = b / cos(alpha_in_radians);
+            }
+            else if(beta_in_radians)
+            {
+                c = b / sin(beta_in_radians);
+            }
         }
     }
 }
 
 void TrigCalculator::CalculateA1()
 {
-    if(a)
+    if(!a1)
     {
-        if(alpha)
+        if(a)
         {
-            a1 = sin(alpha) * a;
+            if(alpha_in_radians)
+            {
+                a1 = sin(alpha_in_radians) * a;
+            }
+            else if(beta_in_radians)
+            {
+                a1 = cos(beta_in_radians) * a;
+            }
         }
-        else if(beta)
+        else if(h)
         {
-            a1 = cos(beta) * a;
-        }
-    }
-    else if(h)
-    {
-        if(alpha)
-        {
-            a1 = tan(alpha) * h;
-        }
-        else if(beta)
-        {
-            a1 = cotan(beta) * h;
+            if(alpha_in_radians)
+            {
+                a1 = tan(alpha_in_radians) * h;
+            }
+            else if(beta_in_radians)
+            {
+                a1 = cotan(beta_in_radians) * h;
+            }
         }
     }
 }
 
 void TrigCalculator::CalculateB1()
 {
-    if(b)
+    if(!b1)
     {
-        if(alpha)
+        if(b)
         {
-            b1 = cos(alpha) * b;
+            if(alpha_in_radians)
+            {
+                b1 = cos(alpha_in_radians) * b;
+            }
+            else if(beta_in_radians)
+            {
+                b1 = sin(beta_in_radians) * b;
+            }
         }
-        else if(beta)
+        else if(h)
         {
-            b1 = sin(beta) * b;
-        }
-    }
-    else if(h)
-    {
-        if(alpha)
-        {
-            b1 = cotan(alpha) * h;
-        }
-        else if(beta)
-        {
-            b1 = tan(beta) * h;
+            if(alpha_in_radians)
+            {
+                b1 = cotan(alpha_in_radians) * h;
+            }
+            else if(beta_in_radians)
+            {
+                b1 = tan(beta_in_radians) * h;
+            }
         }
     }
 }
 
 void TrigCalculator::CalculateH()
 {
-    if(b)
+    if(!h)
     {
-        if(alpha)
+        if(b)
         {
-            h = sin(alpha) * b;
+            if(alpha_in_radians)
+            {
+                h = sin(alpha_in_radians) * b;
+            }
+            else if(beta_in_radians)
+            {
+                h = cos(beta_in_radians) * b;
+            }
         }
-        else if(beta)
+        else if(b1)
         {
-            h = cos(beta) * b;
+            if(alpha_in_radians)
+            {
+                h = tan(alpha_in_radians) * b1;
+            }
+            else if(beta_in_radians)
+            {
+                h = cotan(beta_in_radians) * b1;
+            }
         }
-    }
-    else if(b1)
-    {
-        if(alpha)
+        else if(a)
         {
-            h = tan(alpha) * b1;
+            if(alpha_in_radians)
+            {
+                h = cos(alpha_in_radians) * a;
+            }
+            else if(beta_in_radians)
+            {
+                h = sin(beta_in_radians) * a;
+            }
         }
-        else if(beta)
+        else if(a1)
         {
-            h = cotan(beta) * b1;
-        }
-    }
-    else if(a)
-    {
-        if(alpha)
-        {
-            h = cos(alpha) * a;
-        }
-        else if(beta)
-        {
-            h = sin(beta) * a;
-        }
-    }
-    else if(a1)
-    {
-        if(alpha)
-        {
-            h = cotan(alpha) * a1;
-        }
-        else if(beta)
-        {
-            h = tan(beta) * a1;
+            if(alpha_in_radians)
+            {
+                h = cotan(alpha_in_radians) * a1;
+            }
+            else if(beta_in_radians)
+            {
+                h = tan(beta_in_radians) * a1;
+            }
         }
     }
 }
 
 void TrigCalculator::CalculateAlpha()
 {
-    if(beta)
+    if(!alpha)
     {
-        alpha = 90 - beta;
+        if(beta)
+        {
+            alpha = 90 - beta;
+        }
     }
 }
 
 void TrigCalculator::CalculateBeta()
 {
-    if(alpha)
+    if(!beta)
     {
-        beta = 90 - alpha;
+        if(alpha)
+        {
+            beta = 90 - alpha;
+        }
     }
 }

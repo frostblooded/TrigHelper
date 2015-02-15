@@ -4,12 +4,12 @@
 class TrigCalculator
 {
 public:
-    static float a;
-    static float b;
-    static float c;
-    static float a1;
-    static float b1;
-    static float h;
+    static double a;
+    static double b;
+    static double c;
+    static double a1;
+    static double b1;
+    static double h;
     static int alpha;
     static int beta;
 

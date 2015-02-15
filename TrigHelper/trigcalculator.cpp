@@ -82,7 +82,50 @@ void TrigCalculator::CalculateA()
 
 void TrigCalculator::CalculateB()
 {
-
+    if(c)
+    {
+        if(alpha)
+        {
+            b = cos(alpha) * c;
+        }
+        else if(beta)
+        {
+            b = sin(beta) * c;
+        }
+    }
+    else if(a)
+    {
+        if(alpha)
+        {
+            b = cotan(alpha) * a;
+        }
+        else if(beta)
+        {
+            b = tan(beta) * a;
+        }
+    }
+    else if(h)
+    {
+        if(alpha)
+        {
+            b = h / sin(alpha);
+        }
+        else if(beta)
+        {
+            b = h / cos(beta);
+        }
+    }
+    else if(b1)
+    {
+        if(alpha)
+        {
+            b = b1 / cos(alpha);
+        }
+        else if(beta)
+        {
+            b = b1 / sin(beta);
+        }
+    }
 }
 
 void TrigCalculator::CalculateC()

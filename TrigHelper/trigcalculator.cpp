@@ -230,6 +230,28 @@ void TrigCalculator::CalculateH()
             h = cotan(beta) * b1;
         }
     }
+    else if(a)
+    {
+        if(alpha)
+        {
+            h = cos(alpha) * a;
+        }
+        else if(beta)
+        {
+            h = sin(beta) * a;
+        }
+    }
+    else if(a1)
+    {
+        if(alpha)
+        {
+            h = cotan(alpha) * a1;
+        }
+        else if(beta)
+        {
+            h = tan(beta) * a1;
+        }
+    }
 }
 
 void TrigCalculator::CalculateAlpha()

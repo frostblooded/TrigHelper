@@ -29,7 +29,24 @@ double cotan(double num)
 
 void TrigCalculator::Calculate()
 {
-    CalculateA();
+    bool found_everything = false;
+
+    for(int i = 0; !found_everything; i++)
+    {
+        CalculateA();
+        CalculateB();
+        CalculateC();
+        CalculateA1();
+        CalculateB1();
+        CalculateH();
+        CalculateAlpha();
+        CalculateBeta();
+
+        if(a && b && c && a1 && b1 && h && alpha && beta)
+        {
+            found_everything = true;
+        }
+    }
 }
 
 void TrigCalculator::CalculateA()
@@ -256,10 +273,16 @@ void TrigCalculator::CalculateH()
 
 void TrigCalculator::CalculateAlpha()
 {
-
+    if(beta)
+    {
+        alpha = 90 - beta;
+    }
 }
 
 void TrigCalculator::CalculateBeta()
 {
-
+    if(alpha)
+    {
+        beta = 90 - alpha;
+    }
 }

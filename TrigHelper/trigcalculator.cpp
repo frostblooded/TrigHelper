@@ -156,7 +156,28 @@ void TrigCalculator::CalculateC()
 
 void TrigCalculator::CalculateA1()
 {
-
+    if(a)
+    {
+        if(alpha)
+        {
+            a1 = sin(alpha) * a;
+        }
+        else if(beta)
+        {
+            a1 = cos(beta) * a;
+        }
+    }
+    else if(h)
+    {
+        if(alpha)
+        {
+            a1 = tan(alpha) * h;
+        }
+        else if(beta)
+        {
+            a1 = cotan(beta) * h;
+        }
+    }
 }
 
 void TrigCalculator::CalculateB1()

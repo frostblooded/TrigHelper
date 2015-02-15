@@ -130,7 +130,28 @@ void TrigCalculator::CalculateB()
 
 void TrigCalculator::CalculateC()
 {
-
+    if(a)
+    {
+        if(alpha)
+        {
+            c = a / sin(alpha);
+        }
+        else if(beta)
+        {
+            c = a / cos(beta);
+        }
+    }
+    else if(b)
+    {
+        if(alpha)
+        {
+            c = b / cos(alpha);
+        }
+        else if(beta)
+        {
+            c = b / sin(beta);
+        }
+    }
 }
 
 void TrigCalculator::CalculateA1()

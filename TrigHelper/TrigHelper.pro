@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        trighelper.cpp
+        trighelper.cpp \
+    trigcalculator.cpp
 
-HEADERS  += trighelper.h
+HEADERS  += trighelper.h \
+    trigcalculator.h
 
 FORMS    += trighelper.ui

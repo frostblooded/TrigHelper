@@ -33,17 +33,7 @@ void TrigHelper::on_calculate_button_clicked()
 {
     if(ui->calculate_button->text() == "Calculate")
     {
-        TrigCalculator::a = ui->a_display->text().toFloat();
-        TrigCalculator::b = ui->b_display->text().toFloat();
-        TrigCalculator::c = ui->c_display->text().toFloat();
-        TrigCalculator::a1 = ui->a1_display->text().toFloat();
-        TrigCalculator::b1 = ui->b1_display->text().toFloat();
-        TrigCalculator::h = ui->h_display->text().toFloat();
-        TrigCalculator::alpha = ui->alpha_display->text().toFloat();
-        TrigCalculator::alpha_in_radians = TrigCalculator::alpha * M_PI / 180;
-        TrigCalculator::beta = ui->beta_display->text().toFloat();
-        TrigCalculator::beta_in_radians = TrigCalculator::beta * M_PI / 180;
-
+        TrigCalculator::AcceptValues();
         TrigCalculator::Calculate();
 
         ui->calculate_button->setText("Reset");

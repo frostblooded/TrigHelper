@@ -15,6 +15,11 @@ double TrigCalculator::alpha_in_radians;
 int TrigCalculator::beta;
 double TrigCalculator::beta_in_radians;
 
+double cotan(double num)
+{
+  return (1 / tan(num));
+}
+
 void TrigCalculator::Initialize()
 {
     a = 0;
@@ -29,9 +34,18 @@ void TrigCalculator::Initialize()
     beta_in_radians = 0;
 }
 
-double cotan(double num)
+void TrigCalculator::AcceptValue()
 {
-  return (1 / tan(num));
+    a = ui->a_display->text().toFloat();
+    b = ui->b_display->text().toFloat();
+    c = ui->c_display->text().toFloat();
+    a1 = ui->a1_display->text().toFloat();
+    b1 = ui->b1_display->text().toFloat();
+    h = ui->h_display->text().toFloat();
+    alpha = ui->alpha_display->text().toFloat();
+    alpha_in_radians = TrigCalculator::alpha * M_PI / 180;
+    beta = ui->beta_display->text().toFloat();
+    beta_in_radians = TrigCalculator::beta * M_PI / 180;
 }
 
 void TrigCalculator::Calculate()

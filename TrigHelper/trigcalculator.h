@@ -16,6 +16,7 @@ public:
     static double beta_in_radians;
 
     static void Initialize();
+    static void AcceptValues();
     static void Calculate();
 
 private:

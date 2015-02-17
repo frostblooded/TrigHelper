@@ -1,5 +1,8 @@
 #include "trigcalculator.h"
 #include <math.h>
+#include <QMessageBox>
+
+#define MAX_TRIES_TO_CALCULATE 30
 
 double TrigCalculator::a;
 double TrigCalculator::b;
@@ -48,6 +51,12 @@ void TrigCalculator::Calculate()
         if(a && b && c && a1 && b1 && h && alpha && beta)
         {
             everything_found = true;
+        }
+
+        if(i > MAX_TRIES_TO_CALCULATE)
+        {
+            QMessageBox::critical(NULL, "Fatal error!", "The program failed to calculate the values! Please contact the programmer!");
+            break;
         }
     }
 }

@@ -21,6 +21,7 @@ private slots:
 private:
     Ui::TrigHelper *ui;
     void AcceptValues();
+    bool AValueIsInvalid();
     void Display();
 };
 

@@ -2,6 +2,7 @@
 #include "trighelper.h"
 #include "ui_trighelper.h"
 #include <math.h>
+#include <QMessageBox>
 
 #define CALCULATE_BUTTON_TEXT "Calculate"
 #define RESET_BUTTON_TEXT "Reset"
@@ -53,19 +54,31 @@ void TrigHelper::AcceptValues()
     TrigCalculator::beta_in_radians = TrigCalculator::beta * M_PI / 180;
 }
 
+bool TrigHelper::AValueIsInvalid()
+{
+    return TrigCalculator::a < 0 || TrigCalculator::b < 0 || TrigCalculator::c < 0 || TrigCalculator::a1 < 0 || TrigCalculator::b1 < 0 || TrigCalculator::h < 0 || TrigCalculator::alpha < 0 || TrigCalculator::beta < 0;
+}
+
 void TrigHelper::on_calculate_button_clicked()
 {
     if(ui->calculate_button->text() == CALCULATE_BUTTON_TEXT)
     {
         AcceptValues();
-        TrigCalculator::Calculate();
 
-        ui->calculate_button->setText(RESET_BUTTON_TEXT);
+        if(AValueIsInvalid())
+        {
+            QMessageBox::critical(this, "A value is invalid!", "One of the values that you entered is invalid! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else
+        {
+            TrigCalculator::Calculate();
+            ui->calculate_button->setText(RESET_BUTTON_TEXT);
+        }
     }
     else
     {
         TrigCalculator::Initialize();
-
         ui->calculate_button->setText(CALCULATE_BUTTON_TEXT);
     }
 

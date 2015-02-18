@@ -14,6 +14,8 @@ public:
     static double alpha_in_radians;
     static int beta;
     static double beta_in_radians;
+    static double S;
+    static double P;
 
     static void Initialize();
     static void Calculate();
@@ -27,6 +29,8 @@ private:
     static void CalculateH();
     static void CalculateAlpha();
     static void CalculateBeta();
+    static void CalculateS();
+    static void CalculateP();
 };
 
 #endif // TRIGCALCULATOR_H

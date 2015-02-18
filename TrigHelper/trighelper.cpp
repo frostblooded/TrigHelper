@@ -11,7 +11,12 @@ TrigHelper::TrigHelper(QWidget *parent) :
     ui(new Ui::TrigHelper)
 {
     ui->setupUi(this);
+
     TrigCalculator::Initialize();
+
+    ui->S_display->setEnabled(false);
+    ui->P_display->setEnabled(false);
+
     Display();
 }
 
@@ -30,6 +35,8 @@ void TrigHelper::Display()
     ui->h_display->setText(QString::number(TrigCalculator::h));
     ui->alpha_display->setText(QString::number(TrigCalculator::alpha));
     ui->beta_display->setText(QString::number(TrigCalculator::beta));
+    ui->S_display->setText(QString::number(TrigCalculator::S));
+    ui->P_display->setText(QString::number(TrigCalculator::P));
 }
 
 void TrigHelper::AcceptValues()

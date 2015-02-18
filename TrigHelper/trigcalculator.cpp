@@ -15,6 +15,8 @@ int TrigCalculator::alpha;
 double TrigCalculator::alpha_in_radians;
 int TrigCalculator::beta;
 double TrigCalculator::beta_in_radians;
+double TrigCalculator::S;
+double TrigCalculator::P;
 
 double cotan(double num)
 {
@@ -33,6 +35,8 @@ void TrigCalculator::Initialize()
     alpha_in_radians = 0;
     beta = 0;
     beta_in_radians = 0;
+    S = 0;
+    P = 0;
 }
 
 void TrigCalculator::Calculate()
@@ -49,6 +53,8 @@ void TrigCalculator::Calculate()
         CalculateH();
         CalculateAlpha();
         CalculateBeta();
+        CalculateS();
+        CalculateP();
 
         if(a && b && c && a1 && b1 && h && alpha && beta)
         {
@@ -413,6 +419,32 @@ void TrigCalculator::CalculateBeta()
         else if(b && c)
         {
             beta = asin(b / c) * 180 / M_PI;
+        }
+    }
+}
+
+void TrigCalculator::CalculateS()
+{
+    if(!S)
+    {
+        if(a && b)
+        {
+            S = (a * b) / 2;
+        }
+        else if(c && h)
+        {
+            S = (c * h) / 2;
+        }
+    }
+}
+
+void TrigCalculator::CalculateP()
+{
+    if(!P)
+    {
+        if(a && b && c)
+        {
+            P = a + b + c;
         }
     }
 }

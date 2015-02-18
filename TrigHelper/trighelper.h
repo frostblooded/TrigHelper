@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::TrigHelper *ui;
+    void AcceptValues();
     void Display();
 };
 

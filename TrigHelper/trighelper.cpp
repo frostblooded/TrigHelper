@@ -4,6 +4,7 @@
 #include <math.h>
 #include <QMessageBox>
 
+#define PI 3.14159265359
 #define CALCULATE_BUTTON_TEXT "Calculate"
 #define RESET_BUTTON_TEXT "Reset"
 
@@ -49,9 +50,9 @@ void TrigHelper::AcceptValues()
     TrigCalculator::b1 = ui->b1_display->text().toFloat();
     TrigCalculator::h = ui->h_display->text().toFloat();
     TrigCalculator::alpha = ui->alpha_display->text().toFloat();
-    TrigCalculator::alpha_in_radians = TrigCalculator::alpha * M_PI / 180;
+    TrigCalculator::alpha_in_radians = TrigCalculator::alpha * PI / 180;
     TrigCalculator::beta = ui->beta_display->text().toFloat();
-    TrigCalculator::beta_in_radians = TrigCalculator::beta * M_PI / 180;
+    TrigCalculator::beta_in_radians = TrigCalculator::beta * PI / 180;
 }
 
 bool TrigHelper::AValueIsInvalid()

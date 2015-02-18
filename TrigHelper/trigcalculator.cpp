@@ -3,6 +3,7 @@
 #include <math.h>
 #include <QMessageBox>
 
+#define PI 3.14159265359
 #define MAX_TRIES_TO_CALCULATE 30
 
 double TrigCalculator::a;
@@ -403,7 +404,7 @@ void TrigCalculator::CalculateAlpha()
         }
         else if(a && c)
         {
-            alpha = asin(a / c) * 180 / M_PI;
+            alpha = asin(a / c) * 180 / PI;
         }
     }
 }
@@ -418,7 +419,7 @@ void TrigCalculator::CalculateBeta()
         }
         else if(b && c)
         {
-            beta = asin(b / c) * 180 / M_PI;
+            beta = asin(b / c) * 180 / PI;
         }
     }
 }

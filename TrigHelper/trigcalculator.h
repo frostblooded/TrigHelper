@@ -10,9 +10,9 @@ public:
     static double a1;
     static double b1;
     static double h;
-    static int alpha;
+    static double alpha;
     static double alpha_in_radians;
-    static int beta;
+    static double beta;
     static double beta_in_radians;
     static double S;
     static double P;

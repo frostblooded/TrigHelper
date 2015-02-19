@@ -44,14 +44,14 @@ void TrigHelper::Display()
 void TrigHelper::AcceptValues()
 {
     TrigCalculator::a = TrigHelper::ui->a_display->text().toFloat();
-    TrigCalculator::b = ui->b_display->text().toFloat();
-    TrigCalculator::c = ui->c_display->text().toFloat();
-    TrigCalculator::a1 = ui->a1_display->text().toFloat();
-    TrigCalculator::b1 = ui->b1_display->text().toFloat();
-    TrigCalculator::h = ui->h_display->text().toFloat();
-    TrigCalculator::alpha = ui->alpha_display->text().toFloat();
+    TrigCalculator::b = ui->b_display->text().toDouble();
+    TrigCalculator::c = ui->c_display->text().toDouble();
+    TrigCalculator::a1 = ui->a1_display->text().toDouble();
+    TrigCalculator::b1 = ui->b1_display->text().toDouble();
+    TrigCalculator::h = ui->h_display->text().toDouble();
+    TrigCalculator::alpha = ui->alpha_display->text().toDouble();
     TrigCalculator::alpha_in_radians = TrigCalculator::alpha * PI / 180;
-    TrigCalculator::beta = ui->beta_display->text().toFloat();
+    TrigCalculator::beta = ui->beta_display->text().toDouble();
     TrigCalculator::beta_in_radians = TrigCalculator::beta * PI / 180;
 }
 
@@ -63,6 +63,11 @@ bool TrigHelper::AValueIsInvalid()
 bool TrigHelper::OnlyAnglesAreEntered()
 {
     return TrigCalculator::alpha && TrigCalculator::beta && !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h;
+}
+
+bool TrigHelper::AnglesDontEqual90()
+{
+    return (TrigCalculator::alpha && TrigCalculator::beta) && TrigCalculator::alpha + TrigCalculator::beta != 90;
 }
 
 void TrigHelper::on_calculate_button_clicked()
@@ -79,6 +84,11 @@ void TrigHelper::on_calculate_button_clicked()
         else if(OnlyAnglesAreEntered())
         {
             QMessageBox::critical(this, "Only angles are given!", "This program can't calculate if only angles are given! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else if(AnglesDontEqual90())
+        {
+            QMessageBox::critical(this, "Angles don't equal 90 degrees!", "The sum of the angles should be 90 degrees! Please try again!");
             TrigCalculator::Initialize();
         }
         else

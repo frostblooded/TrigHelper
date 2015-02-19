@@ -23,6 +23,7 @@ private:
     void AcceptValues();
     bool AValueIsInvalid();
     bool OnlyAnglesAreEntered();
+    bool AnglesDontEqual90();
     void Display();
 };
 

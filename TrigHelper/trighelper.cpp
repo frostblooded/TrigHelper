@@ -43,7 +43,7 @@ void TrigHelper::Display()
 
 void TrigHelper::AcceptValues()
 {
-    TrigCalculator::a = TrigHelper::ui->a_display->text().toFloat();
+    TrigCalculator::a = TrigHelper::ui->a_display->text().toDouble();
     TrigCalculator::b = ui->b_display->text().toDouble();
     TrigCalculator::c = ui->c_display->text().toDouble();
     TrigCalculator::a1 = ui->a1_display->text().toDouble();

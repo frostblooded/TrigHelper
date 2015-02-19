@@ -59,6 +59,11 @@ bool TrigHelper::AValueIsInvalid()
     return TrigCalculator::a < 0 || TrigCalculator::b < 0 || TrigCalculator::c < 0 || TrigCalculator::a1 < 0 || TrigCalculator::b1 < 0 || TrigCalculator::h < 0 || TrigCalculator::alpha < 0 || TrigCalculator::beta < 0;
 }
 
+bool TrigHelper::OnlyAnglesAreEntered()
+{
+    return TrigCalculator::alpha && TrigCalculator::beta && !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h;
+}
+
 void TrigHelper::on_calculate_button_clicked()
 {
     if(ui->calculate_button->text() == CALCULATE_BUTTON_TEXT)
@@ -68,6 +73,11 @@ void TrigHelper::on_calculate_button_clicked()
         if(AValueIsInvalid())
         {
             QMessageBox::critical(this, "A value is invalid!", "One of the values that you entered is invalid! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else if(OnlyAnglesAreEntered())
+        {
+            QMessageBox::critical(this, "Only angles are given!", "This program can't calculate if only angles are given! Please try again!");
             TrigCalculator::Initialize();
         }
         else

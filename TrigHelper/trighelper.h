@@ -22,6 +22,7 @@ private:
     Ui::TrigHelper *ui;
     void AcceptValues();
     bool AValueIsInvalid();
+    bool OnlyAnglesAreEntered();
     void Display();
 };
 

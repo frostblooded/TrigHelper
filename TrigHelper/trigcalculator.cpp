@@ -263,6 +263,10 @@ void TrigCalculator::CalculateA1()
             {
                 a1 = sqrt(pow(a, 2) - pow(h, 2));
             }
+            else if(b1)
+            {
+                a1 = (-b1 + sqrt(pow(b1, 2) + 4 * pow(a, 2))) / 2;
+            }
         }
         else if(h)
         {
@@ -307,6 +311,10 @@ void TrigCalculator::CalculateB1()
             else if(h)
             {
                 b1 = sqrt(pow(b, 2) - pow(h, 2));
+            }
+            else if(a1)
+            {
+                b1 = (-a1 + sqrt(pow(a1, 2) + 4 * pow(b, 2))) / 2;
             }
         }
         else if(h)

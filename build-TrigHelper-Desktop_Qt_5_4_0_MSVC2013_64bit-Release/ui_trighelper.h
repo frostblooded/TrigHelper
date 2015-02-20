@@ -26,8 +26,8 @@ QT_BEGIN_NAMESPACE
 class Ui_TrigHelper
 {
 public:
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_3;
+    QPushButton *calculate_button;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
@@ -47,63 +47,70 @@ public:
     QLineEdit *h_display;
     QLineEdit *alpha_display;
     QLineEdit *beta_display;
-    QPushButton *calculate_button;
+    QWidget *widget1;
+    QHBoxLayout *horizontalLayout_2;
+    QVBoxLayout *verticalLayout_3;
+    QLabel *label_9;
+    QLabel *label_10;
+    QVBoxLayout *verticalLayout_4;
+    QLineEdit *S_display;
+    QLineEdit *P_display;
 
     void setupUi(QWidget *TrigHelper)
     {
         if (TrigHelper->objectName().isEmpty())
             TrigHelper->setObjectName(QStringLiteral("TrigHelper"));
-        TrigHelper->resize(140, 314);
-        layoutWidget = new QWidget(TrigHelper);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 121, 297));
-        verticalLayout_3 = new QVBoxLayout(layoutWidget);
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
+        TrigHelper->resize(282, 321);
+        calculate_button = new QPushButton(TrigHelper);
+        calculate_button->setObjectName(QStringLiteral("calculate_button"));
+        calculate_button->setGeometry(QRect(11, 283, 261, 27));
+        widget = new QWidget(TrigHelper);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(11, 11, 131, 261));
+        horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        label = new QLabel(layoutWidget);
+        label = new QLabel(widget);
         label->setObjectName(QStringLiteral("label"));
 
         verticalLayout_2->addWidget(label);
 
-        label_2 = new QLabel(layoutWidget);
+        label_2 = new QLabel(widget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         verticalLayout_2->addWidget(label_2);
 
-        label_3 = new QLabel(layoutWidget);
+        label_3 = new QLabel(widget);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         verticalLayout_2->addWidget(label_3);
 
-        label_4 = new QLabel(layoutWidget);
+        label_4 = new QLabel(widget);
         label_4->setObjectName(QStringLiteral("label_4"));
 
         verticalLayout_2->addWidget(label_4);
 
-        label_5 = new QLabel(layoutWidget);
+        label_5 = new QLabel(widget);
         label_5->setObjectName(QStringLiteral("label_5"));
 
         verticalLayout_2->addWidget(label_5);
 
-        label_6 = new QLabel(layoutWidget);
+        label_6 = new QLabel(widget);
         label_6->setObjectName(QStringLiteral("label_6"));
 
         verticalLayout_2->addWidget(label_6);
 
-        label_7 = new QLabel(layoutWidget);
+        label_7 = new QLabel(widget);
         label_7->setObjectName(QStringLiteral("label_7"));
 
         verticalLayout_2->addWidget(label_7);
 
-        label_8 = new QLabel(layoutWidget);
+        label_8 = new QLabel(widget);
         label_8->setObjectName(QStringLiteral("label_8"));
 
         verticalLayout_2->addWidget(label_8);
@@ -114,42 +121,42 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        a_display = new QLineEdit(layoutWidget);
+        a_display = new QLineEdit(widget);
         a_display->setObjectName(QStringLiteral("a_display"));
 
         verticalLayout->addWidget(a_display);
 
-        b_display = new QLineEdit(layoutWidget);
+        b_display = new QLineEdit(widget);
         b_display->setObjectName(QStringLiteral("b_display"));
 
         verticalLayout->addWidget(b_display);
 
-        c_display = new QLineEdit(layoutWidget);
+        c_display = new QLineEdit(widget);
         c_display->setObjectName(QStringLiteral("c_display"));
 
         verticalLayout->addWidget(c_display);
 
-        a1_display = new QLineEdit(layoutWidget);
+        a1_display = new QLineEdit(widget);
         a1_display->setObjectName(QStringLiteral("a1_display"));
 
         verticalLayout->addWidget(a1_display);
 
-        b1_display = new QLineEdit(layoutWidget);
+        b1_display = new QLineEdit(widget);
         b1_display->setObjectName(QStringLiteral("b1_display"));
 
         verticalLayout->addWidget(b1_display);
 
-        h_display = new QLineEdit(layoutWidget);
+        h_display = new QLineEdit(widget);
         h_display->setObjectName(QStringLiteral("h_display"));
 
         verticalLayout->addWidget(h_display);
 
-        alpha_display = new QLineEdit(layoutWidget);
+        alpha_display = new QLineEdit(widget);
         alpha_display->setObjectName(QStringLiteral("alpha_display"));
 
         verticalLayout->addWidget(alpha_display);
 
-        beta_display = new QLineEdit(layoutWidget);
+        beta_display = new QLineEdit(widget);
         beta_display->setObjectName(QStringLiteral("beta_display"));
 
         verticalLayout->addWidget(beta_display);
@@ -157,13 +164,45 @@ public:
 
         horizontalLayout->addLayout(verticalLayout);
 
+        widget1 = new QWidget(TrigHelper);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(150, 10, 121, 61));
+        horizontalLayout_2 = new QHBoxLayout(widget1);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        label_9 = new QLabel(widget1);
+        label_9->setObjectName(QStringLiteral("label_9"));
 
-        verticalLayout_3->addLayout(horizontalLayout);
+        verticalLayout_3->addWidget(label_9);
 
-        calculate_button = new QPushButton(layoutWidget);
-        calculate_button->setObjectName(QStringLiteral("calculate_button"));
+        label_10 = new QLabel(widget1);
+        label_10->setObjectName(QStringLiteral("label_10"));
 
-        verticalLayout_3->addWidget(calculate_button);
+        verticalLayout_3->addWidget(label_10);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_3);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        S_display = new QLineEdit(widget1);
+        S_display->setObjectName(QStringLiteral("S_display"));
+
+        verticalLayout_4->addWidget(S_display);
+
+        P_display = new QLineEdit(widget1);
+        P_display->setObjectName(QStringLiteral("P_display"));
+
+        verticalLayout_4->addWidget(P_display);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_4);
 
 
         retranslateUi(TrigHelper);
@@ -174,6 +213,7 @@ public:
     void retranslateUi(QWidget *TrigHelper)
     {
         TrigHelper->setWindowTitle(QApplication::translate("TrigHelper", "TrigHelper", 0));
+        calculate_button->setText(QApplication::translate("TrigHelper", "Calculate", 0));
         label->setText(QApplication::translate("TrigHelper", "a:", 0));
         label_2->setText(QApplication::translate("TrigHelper", "b:", 0));
         label_3->setText(QApplication::translate("TrigHelper", "c:", 0));
@@ -182,7 +222,8 @@ public:
         label_6->setText(QApplication::translate("TrigHelper", "h:", 0));
         label_7->setText(QApplication::translate("TrigHelper", "alpha:", 0));
         label_8->setText(QApplication::translate("TrigHelper", "beta:", 0));
-        calculate_button->setText(QApplication::translate("TrigHelper", "Calculate", 0));
+        label_9->setText(QApplication::translate("TrigHelper", "S:", 0));
+        label_10->setText(QApplication::translate("TrigHelper", "P:", 0));
     } // retranslateUi
 
 };

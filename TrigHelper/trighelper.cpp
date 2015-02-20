@@ -55,9 +55,33 @@ void TrigHelper::AcceptValues()
     TrigCalculator::beta_in_radians = TrigCalculator::beta * PI / 180;
 }
 
-bool TrigHelper::AValueIsInvalid()
+bool TrigHelper::AValueIsNegative()
 {
     return TrigCalculator::a < 0 || TrigCalculator::b < 0 || TrigCalculator::c < 0 || TrigCalculator::a1 < 0 || TrigCalculator::b1 < 0 || TrigCalculator::h < 0 || TrigCalculator::alpha < 0 || TrigCalculator::beta < 0;
+}
+
+bool TrigHelper::SidesAreImpossibleForRightTriangle()
+{
+    if(TrigCalculator::a && TrigCalculator::b && TrigCalculator::c)
+    {
+        return pow(TrigCalculator::c, 2) != pow(TrigCalculator::a, 2) + pow(TrigCalculator::b, 2);
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool TrigHelper::SumOfA1AndB1DoesntEqualC()
+{
+    if(TrigCalculator::a1 && TrigCalculator::b1)
+    {
+        return TrigCalculator::a1 + TrigCalculator::b1 != TrigCalculator::c;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool TrigHelper::OnlyAnglesAreEntered()
@@ -76,9 +100,19 @@ void TrigHelper::on_calculate_button_clicked()
     {
         AcceptValues();
 
-        if(AValueIsInvalid())
+        if(AValueIsNegative())
         {
             QMessageBox::critical(this, "A value is invalid!", "One of the values that you entered is invalid! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else if(SidesAreImpossibleForRightTriangle())
+        {
+            QMessageBox::critical(this, "Triangle is impossible!", "A right triangle with sides like these doesn't exist! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else if(SumOfA1AndB1DoesntEqualC())
+        {
+            QMessageBox::critical(this, "Triangle is impossible!", "The sum of a1 and b1 must be equal c! Please try again!");
             TrigCalculator::Initialize();
         }
         else if(OnlyAnglesAreEntered())

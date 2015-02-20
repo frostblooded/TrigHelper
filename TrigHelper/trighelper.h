@@ -21,7 +21,9 @@ private slots:
 private:
     Ui::TrigHelper *ui;
     void AcceptValues();
-    bool AValueIsInvalid();
+    bool AValueIsNegative();
+    bool SidesAreImpossibleForRightTriangle();
+    bool SumOfA1AndB1DoesntEqualC();
     bool OnlyAnglesAreEntered();
     bool AnglesDontEqual90();
     void Display();

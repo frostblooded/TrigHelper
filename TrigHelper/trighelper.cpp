@@ -5,11 +5,12 @@
 #include "triangle.h"
 #include <math.h>
 #include <QMessageBox>
-#include <QSizeGrip>
 
 #define PI 3.14159265359
 #define CALCULATE_BUTTON_TEXT "Calculate"
 #define RESET_BUTTON_TEXT "Reset"
+#define WINDOW_WIDTH 282
+#define WINDOW_HEIGHT 321
 
 Triangle triangle;
 
@@ -23,7 +24,8 @@ TrigHelper::TrigHelper(QWidget *parent) :
     ui->S_display->setEnabled(false);
     ui->P_display->setEnabled(false);
 
-
+    this->setMinimumSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+    this->setMaximumSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     Display(triangle);
 }

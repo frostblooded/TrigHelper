@@ -63,70 +63,59 @@ bool ErrorChecker::AValueIsNegative()
 bool ErrorChecker::SidesAreImpossibleForRightTriangle()
 {
     if(a && b && c)
-    {
         return pow(c, 2) != pow(a, 2) + pow(b, 2);
-    }
     else
-    {
         return false;
-    }
 }
 
 bool ErrorChecker::SumOfA1AndB1DoesntEqualC()
 {
     if(a1 && b1 && c)
-    {
         return a1 + b1 != c;
-    }
     else
-    {
         return false;
-    }
 }
 
 bool ErrorChecker::A1IsntSmallerThanA()
 {
     if(a1 && a)
-    {
         return a <= a1;
-    }
     else
-    {
         return false;
-    }
 }
 
 bool ErrorChecker::B1IsntSmallerThanB()
 {
     if(b1 && b)
-    {
         return b <= b1;
-    }
     else
-    {
         return false;
-    }
 }
 
 bool ErrorChecker::AOrBIsSmallerThanH()
 {
     if(a && h)
-    {
         return a <= h;
-    }
     else if(b && h)
-    {
         return b <= h;
-    }
     else
-    {
         return false;
-    }
 }
 
 bool ErrorChecker::OnlyAnglesAreEntered()
 {
     return alpha && beta && !a && !b && !c && !a1 && !b1 && !h;
+}
+
+bool ErrorChecker::CIsSmallerThanAOrB()
+{
+    if(c)
+    {
+        if(b)
+            return b > c;
+        else if(a)
+            return a > c;
+    }
 }
 
 bool ErrorChecker::AnglesDontEqual90()
@@ -187,6 +176,11 @@ bool ErrorChecker::DisplayErrors(Triangle tri)
     else if(AOrBIsSmallerThanH())
     {
         QMessageBox::critical(NULL, "Triangle is impossible!", "A1 and B1 must be bigger than H! Please try again!");
+        return true;
+    }
+    else if(CIsSmallerThanAOrB())
+    {
+        QMessageBox::critical(NULL, "Triangle is impossible!", "C can't be smaller than A or B! Please try again!");
         return true;
     }
     else if(OnlyAnglesAreEntered())

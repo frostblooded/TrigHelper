@@ -65,9 +65,7 @@ void TrigHelper::on_calculate_button_clicked()
         SetValuesFromForm(&triangle);
 
         if(ErrorChecker::DisplayErrors(triangle))
-        {
             triangle.ResetValues();
-        }
         else
         {
             TrigCalculator::Calculate(&triangle);

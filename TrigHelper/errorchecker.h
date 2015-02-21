@@ -31,6 +31,7 @@ private:
     static bool A1IsntSmallerThanA();
     static bool B1IsntSmallerThanB();
     static bool AOrBIsSmallerThanH();
+    static bool CIsSmallerThanAOrB();
     static bool OnlyAnglesAreEntered();
     static bool AnglesDontEqual90();
 };

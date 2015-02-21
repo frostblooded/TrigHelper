@@ -60,14 +60,6 @@ bool ErrorChecker::AValueIsNegative()
     return a < 0 || b < 0 || c < 0 || a1 < 0 || b1 < 0 || h < 0 || alpha < 0 || beta < 0;
 }
 
-bool ErrorChecker::SidesAreImpossibleForRightTriangle()
-{
-    if(a && b && c)
-        return pow(c, 2) != pow(a, 2) + pow(b, 2);
-    else
-        return false;
-}
-
 bool ErrorChecker::SumOfA1AndB1DoesntEqualC()
 {
     if(a1 && b1 && c)
@@ -151,11 +143,6 @@ bool ErrorChecker::DisplayErrors(Triangle tri)
     else if(AValueIsNegative())
     {
         QMessageBox::critical(NULL, "A value is invalid!", "One of the values that you entered is invalid! Please try again!");
-        return true;
-    }
-    else if(SidesAreImpossibleForRightTriangle())
-    {
-        QMessageBox::critical(NULL, "Triangle is impossible!", "A right triangle with sides like these doesn't exist! Please try again!");
         return true;
     }
     else if(SumOfA1AndB1DoesntEqualC())

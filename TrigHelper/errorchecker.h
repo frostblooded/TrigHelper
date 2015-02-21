@@ -26,7 +26,6 @@ private:
     static bool NoInputIsGiven();
     static bool MoreThan2ValuesAreEntered();
     static bool AValueIsNegative();
-    static bool SidesAreImpossibleForRightTriangle();
     static bool SumOfA1AndB1DoesntEqualC();
     static bool A1IsntSmallerThanA();
     static bool B1IsntSmallerThanB();

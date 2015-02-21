@@ -5,6 +5,7 @@
 #include "triangle.h"
 #include <math.h>
 #include <QMessageBox>
+#include <QSizeGrip>
 
 #define PI 3.14159265359
 #define CALCULATE_BUTTON_TEXT "Calculate"
@@ -21,6 +22,8 @@ TrigHelper::TrigHelper(QWidget *parent) :
 
     ui->S_display->setEnabled(false);
     ui->P_display->setEnabled(false);
+
+
 
     Display(triangle);
 }

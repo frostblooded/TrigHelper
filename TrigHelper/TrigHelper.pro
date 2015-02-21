@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         trighelper.cpp \
-    trigcalculator.cpp
+    trigcalculator.cpp \
+    errorchecker.cpp
 
 HEADERS  += trighelper.h \
-    trigcalculator.h
+    trigcalculator.h \
+    errorchecker.h
 
 FORMS    += trighelper.ui

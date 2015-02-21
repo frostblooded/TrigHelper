@@ -1,6 +1,7 @@
 #include "trigcalculator.h"
 #include "trighelper.h"
 #include "ui_trighelper.h"
+#include "errorchecker.h"
 #include <math.h>
 #include <QMessageBox>
 
@@ -55,139 +56,14 @@ void TrigHelper::AcceptValues()
     TrigCalculator::beta_in_radians = TrigCalculator::beta * PI / 180;
 }
 
-bool TrigHelper::NoInputIsGiven()
-{
-    return !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h && !TrigCalculator::alpha && !TrigCalculator::beta;
-}
-
-bool TrigHelper::AValueIsNegative()
-{
-    return TrigCalculator::a < 0 || TrigCalculator::b < 0 || TrigCalculator::c < 0 || TrigCalculator::a1 < 0 || TrigCalculator::b1 < 0 || TrigCalculator::h < 0 || TrigCalculator::alpha < 0 || TrigCalculator::beta < 0;
-}
-
-bool TrigHelper::SidesAreImpossibleForRightTriangle()
-{
-    if(TrigCalculator::a && TrigCalculator::b && TrigCalculator::c)
-    {
-        return pow(TrigCalculator::c, 2) != pow(TrigCalculator::a, 2) + pow(TrigCalculator::b, 2);
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool TrigHelper::SumOfA1AndB1DoesntEqualC()
-{
-    if(TrigCalculator::a1 && TrigCalculator::b1 && TrigCalculator::c)
-    {
-        return TrigCalculator::a1 + TrigCalculator::b1 != TrigCalculator::c;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool TrigHelper::A1IsntSmallerThanA()
-{
-    if(TrigCalculator::a1 && TrigCalculator::a)
-    {
-        return TrigCalculator::a <= TrigCalculator::a1;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool TrigHelper::B1IsntSmallerThanB()
-{
-    if(TrigCalculator::b1 && TrigCalculator::b)
-    {
-        return TrigCalculator::b <= TrigCalculator::b1;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool TrigHelper::AOrBIsSmallerThanH()
-{
-    if(TrigCalculator::a && TrigCalculator::h)
-    {
-        return TrigCalculator::a <= TrigCalculator::h;
-    }
-    else if(TrigCalculator::b && TrigCalculator::h)
-    {
-        return TrigCalculator::b <= TrigCalculator::h;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-bool TrigHelper::OnlyAnglesAreEntered()
-{
-    return TrigCalculator::alpha && TrigCalculator::beta && !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h;
-}
-
-bool TrigHelper::AnglesDontEqual90()
-{
-    return (TrigCalculator::alpha && TrigCalculator::beta) && TrigCalculator::alpha + TrigCalculator::beta != 90;
-}
-
 void TrigHelper::on_calculate_button_clicked()
 {
     if(ui->calculate_button->text() == CALCULATE_BUTTON_TEXT)
     {
         AcceptValues();
 
-        if(NoInputIsGiven())
+        if(ErrorChecker::DisplayErrors())
         {
-            QMessageBox::critical(this, "No input is given!", "No values are entered! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(AValueIsNegative())
-        {
-            QMessageBox::critical(this, "A value is invalid!", "One of the values that you entered is invalid! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(SidesAreImpossibleForRightTriangle())
-        {
-            QMessageBox::critical(this, "Triangle is impossible!", "A right triangle with sides like these doesn't exist! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(SumOfA1AndB1DoesntEqualC())
-        {
-            QMessageBox::critical(this, "Triangle is impossible!", "The sum of A1 and B1 must be equal C! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(A1IsntSmallerThanA())
-        {
-            QMessageBox::critical(this, "Triangle is impossible!", "A1 must be smaller than A! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(B1IsntSmallerThanB())
-        {
-            QMessageBox::critical(this, "Triangle is impossible!", "B1 must be smaller than B! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(AOrBIsSmallerThanH())
-        {
-            QMessageBox::critical(this, "Triangle is impossible!", "A1 and B1 must be bigger than H! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(OnlyAnglesAreEntered())
-        {
-            QMessageBox::critical(this, "Only angles are given!", "This program can't calculate if only angles are given! Please try again!");
-            TrigCalculator::Initialize();
-        }
-        else if(AnglesDontEqual90())
-        {
-            QMessageBox::critical(this, "Angles don't equal 90 degrees!", "The sum of the angles should be 90 degrees! Please try again!");
             TrigCalculator::Initialize();
         }
         else

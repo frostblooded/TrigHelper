@@ -55,6 +55,11 @@ void TrigHelper::AcceptValues()
     TrigCalculator::beta_in_radians = TrigCalculator::beta * PI / 180;
 }
 
+bool TrigHelper::NoInputIsGiven()
+{
+    return !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h && !TrigCalculator::alpha && !TrigCalculator::beta;
+}
+
 bool TrigHelper::AValueIsNegative()
 {
     return TrigCalculator::a < 0 || TrigCalculator::b < 0 || TrigCalculator::c < 0 || TrigCalculator::a1 < 0 || TrigCalculator::b1 < 0 || TrigCalculator::h < 0 || TrigCalculator::alpha < 0 || TrigCalculator::beta < 0;
@@ -124,7 +129,12 @@ void TrigHelper::on_calculate_button_clicked()
     {
         AcceptValues();
 
-        if(AValueIsNegative())
+        if(NoInputIsGiven())
+        {
+            QMessageBox::critical(this, "No input is given!", "No values are entered! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else if(AValueIsNegative())
         {
             QMessageBox::critical(this, "A value is invalid!", "One of the values that you entered is invalid! Please try again!");
             TrigCalculator::Initialize();

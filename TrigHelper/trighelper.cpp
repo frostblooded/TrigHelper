@@ -74,7 +74,7 @@ bool TrigHelper::SidesAreImpossibleForRightTriangle()
 
 bool TrigHelper::SumOfA1AndB1DoesntEqualC()
 {
-    if(TrigCalculator::a1 && TrigCalculator::b1)
+    if(TrigCalculator::a1 && TrigCalculator::b1 && TrigCalculator::c)
     {
         return TrigCalculator::a1 + TrigCalculator::b1 != TrigCalculator::c;
     }

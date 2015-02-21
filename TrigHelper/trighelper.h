@@ -27,6 +27,7 @@ private:
     bool SumOfA1AndB1DoesntEqualC();
     bool A1IsntSmallerThanA();
     bool B1IsntSmallerThanB();
+    bool AOrBIsSmallerThanH();
     bool OnlyAnglesAreEntered();
     bool AnglesDontEqual90();
     void Display();

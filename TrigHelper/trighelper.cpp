@@ -84,6 +84,30 @@ bool TrigHelper::SumOfA1AndB1DoesntEqualC()
     }
 }
 
+bool TrigHelper::A1IsntSmallerThanA()
+{
+    if(TrigCalculator::a1 && TrigCalculator::a)
+    {
+        return TrigCalculator::a <= TrigCalculator::a1;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool TrigHelper::B1IsntSmallerThanB()
+{
+    if(TrigCalculator::b1 && TrigCalculator::b)
+    {
+        return TrigCalculator::b <= TrigCalculator::b1;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 bool TrigHelper::OnlyAnglesAreEntered()
 {
     return TrigCalculator::alpha && TrigCalculator::beta && !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h;
@@ -113,6 +137,16 @@ void TrigHelper::on_calculate_button_clicked()
         else if(SumOfA1AndB1DoesntEqualC())
         {
             QMessageBox::critical(this, "Triangle is impossible!", "The sum of a1 and b1 must be equal c! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else if(A1IsntSmallerThanA())
+        {
+            QMessageBox::critical(this, "Triangle is impossible!", "A1 must be smaller than A! Please try again!");
+            TrigCalculator::Initialize();
+        }
+        else if(B1IsntSmallerThanB())
+        {
+            QMessageBox::critical(this, "Triangle is impossible!", "B1 must be smaller than B! Please try again!");
             TrigCalculator::Initialize();
         }
         else if(OnlyAnglesAreEntered())

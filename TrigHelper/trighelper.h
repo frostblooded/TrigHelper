@@ -24,6 +24,8 @@ private:
     bool AValueIsNegative();
     bool SidesAreImpossibleForRightTriangle();
     bool SumOfA1AndB1DoesntEqualC();
+    bool A1IsntSmallerThanA();
+    bool B1IsntSmallerThanB();
     bool OnlyAnglesAreEntered();
     bool AnglesDontEqual90();
     void Display();

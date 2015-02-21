@@ -19,7 +19,6 @@ public:
 
     Triangle();
     void ResetValues();
-    void AcceptValuesFromForm();
 };
 
 #endif // TRIANGLE_H

@@ -77,6 +77,7 @@ void TrigCalculator::Calculate(Triangle *tri)
         if(i > MAX_TRIES_TO_CALCULATE)
         {
             QMessageBox::critical(NULL, "Fatal error!", "The program failed to calculate the values! Please contact the programmer!");
+            tri->ResetValues();
             break;
         }
     }

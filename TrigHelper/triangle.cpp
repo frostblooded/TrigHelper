@@ -15,7 +15,6 @@ double S;
 double P;
 
 void ResetValues();
-void AcceptValuesFromForm();
 
 Triangle::Triangle()
 {

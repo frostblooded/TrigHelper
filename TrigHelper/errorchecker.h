@@ -24,6 +24,7 @@ private:
     static void Initialize();
 
     static bool NoInputIsGiven();
+    static bool MoreThan2ValuesAreEntered();
     static bool AValueIsNegative();
     static bool SidesAreImpossibleForRightTriangle();
     static bool SumOfA1AndB1DoesntEqualC();

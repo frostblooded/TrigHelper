@@ -36,6 +36,25 @@ bool ErrorChecker::NoInputIsGiven()
     return !a && !b && !c && !a1 && !b1 && !h && !alpha && !beta;
 }
 
+bool ErrorChecker::MoreThan2ValuesAreEntered()
+{
+    int values_count = 0;
+
+    if(a) values_count++;
+    if(b) values_count++;
+    if(c) values_count++;
+    if(a1) values_count++;
+    if(b1) values_count++;
+    if(h) values_count++;
+    if(alpha) values_count++;
+    if(beta) values_count++;
+
+    if(values_count > 2)
+        return true;
+
+    return false;
+}
+
 bool ErrorChecker::AValueIsNegative()
 {
     return a < 0 || b < 0 || c < 0 || a1 < 0 || b1 < 0 || h < 0 || alpha < 0 || beta < 0;
@@ -133,6 +152,11 @@ bool ErrorChecker::DisplayErrors(Triangle tri)
     if(NoInputIsGiven())
     {
         QMessageBox::critical(NULL, "No input is given!", "No values are entered! Please try again!");
+        return true;
+    }
+    else if(MoreThan2ValuesAreEntered())
+    {
+        QMessageBox::critical(NULL, "Too much values are entered!", "You have entered more than 2 values! Please enter only 2 values!");
         return true;
     }
     else if(AValueIsNegative())

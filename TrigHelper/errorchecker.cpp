@@ -108,6 +108,8 @@ bool ErrorChecker::CIsSmallerThanAOrB()
         else if(a)
             return a > c;
     }
+    else
+        return false;
 }
 
 bool ErrorChecker::AnglesDontEqual90()

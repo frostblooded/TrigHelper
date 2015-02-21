@@ -1,23 +1,51 @@
 #include "errorchecker.h"
-#include "trigcalculator.h"
 #include <QMessageBox>
 #include <math.h>
 
+double ErrorChecker::a;
+double ErrorChecker::b;
+double ErrorChecker::c;
+double ErrorChecker::a1;
+double ErrorChecker::b1;
+double ErrorChecker::h;
+double ErrorChecker::alpha;
+double ErrorChecker::alpha_in_radians;
+double ErrorChecker::beta;
+double ErrorChecker::beta_in_radians;
+double ErrorChecker::S;
+double ErrorChecker::P;
+
+void ErrorChecker::Initialize()
+{
+    a = 0;
+    b = 0;
+    c = 0;
+    a1 = 0;
+    b1 = 0;
+    h = 0;
+    alpha = 0;
+    alpha_in_radians = 0;
+    beta = 0;
+    beta_in_radians = 0;
+    S = 0;
+    P = 0;
+}
+
 bool ErrorChecker::NoInputIsGiven()
 {
-    return !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h && !TrigCalculator::alpha && !TrigCalculator::beta;
+    return !a && !b && !c && !a1 && !b1 && !h && !alpha && !beta;
 }
 
 bool ErrorChecker::AValueIsNegative()
 {
-    return TrigCalculator::a < 0 || TrigCalculator::b < 0 || TrigCalculator::c < 0 || TrigCalculator::a1 < 0 || TrigCalculator::b1 < 0 || TrigCalculator::h < 0 || TrigCalculator::alpha < 0 || TrigCalculator::beta < 0;
+    return a < 0 || b < 0 || c < 0 || a1 < 0 || b1 < 0 || h < 0 || alpha < 0 || beta < 0;
 }
 
 bool ErrorChecker::SidesAreImpossibleForRightTriangle()
 {
-    if(TrigCalculator::a && TrigCalculator::b && TrigCalculator::c)
+    if(a && b && c)
     {
-        return pow(TrigCalculator::c, 2) != pow(TrigCalculator::a, 2) + pow(TrigCalculator::b, 2);
+        return pow(c, 2) != pow(a, 2) + pow(b, 2);
     }
     else
     {
@@ -27,9 +55,9 @@ bool ErrorChecker::SidesAreImpossibleForRightTriangle()
 
 bool ErrorChecker::SumOfA1AndB1DoesntEqualC()
 {
-    if(TrigCalculator::a1 && TrigCalculator::b1 && TrigCalculator::c)
+    if(a1 && b1 && c)
     {
-        return TrigCalculator::a1 + TrigCalculator::b1 != TrigCalculator::c;
+        return a1 + b1 != c;
     }
     else
     {
@@ -39,9 +67,9 @@ bool ErrorChecker::SumOfA1AndB1DoesntEqualC()
 
 bool ErrorChecker::A1IsntSmallerThanA()
 {
-    if(TrigCalculator::a1 && TrigCalculator::a)
+    if(a1 && a)
     {
-        return TrigCalculator::a <= TrigCalculator::a1;
+        return a <= a1;
     }
     else
     {
@@ -51,9 +79,9 @@ bool ErrorChecker::A1IsntSmallerThanA()
 
 bool ErrorChecker::B1IsntSmallerThanB()
 {
-    if(TrigCalculator::b1 && TrigCalculator::b)
+    if(b1 && b)
     {
-        return TrigCalculator::b <= TrigCalculator::b1;
+        return b <= b1;
     }
     else
     {
@@ -63,13 +91,13 @@ bool ErrorChecker::B1IsntSmallerThanB()
 
 bool ErrorChecker::AOrBIsSmallerThanH()
 {
-    if(TrigCalculator::a && TrigCalculator::h)
+    if(a && h)
     {
-        return TrigCalculator::a <= TrigCalculator::h;
+        return a <= h;
     }
-    else if(TrigCalculator::b && TrigCalculator::h)
+    else if(b && h)
     {
-        return TrigCalculator::b <= TrigCalculator::h;
+        return b <= h;
     }
     else
     {
@@ -79,16 +107,29 @@ bool ErrorChecker::AOrBIsSmallerThanH()
 
 bool ErrorChecker::OnlyAnglesAreEntered()
 {
-    return TrigCalculator::alpha && TrigCalculator::beta && !TrigCalculator::a && !TrigCalculator::b && !TrigCalculator::c && !TrigCalculator::a1 && !TrigCalculator::b1 && !TrigCalculator::h;
+    return alpha && beta && !a && !b && !c && !a1 && !b1 && !h;
 }
 
 bool ErrorChecker::AnglesDontEqual90()
 {
-    return (TrigCalculator::alpha && TrigCalculator::beta) && TrigCalculator::alpha + TrigCalculator::beta != 90;
+    return (alpha && beta) && alpha + beta != 90;
 }
 
-bool ErrorChecker::DisplayErrors()
+bool ErrorChecker::DisplayErrors(Triangle tri)
 {
+    Initialize();
+
+    a = tri.a;
+    b = tri.b;
+    c = tri.c;
+    a1 = tri.a1;
+    b1 = tri.b1;
+    h = tri.h;
+    alpha = tri.alpha;
+    alpha_in_radians = tri.alpha_in_radians;
+    beta = tri.beta;
+    beta_in_radians = tri.beta_in_radians;
+
     if(NoInputIsGiven())
     {
         QMessageBox::critical(NULL, "No input is given!", "No values are entered! Please try again!");

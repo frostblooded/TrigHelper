@@ -1,5 +1,4 @@
 #include "trigcalculator.h"
-#include "trighelper.h"
 #include <math.h>
 #include <QMessageBox>
 
@@ -40,8 +39,21 @@ void TrigCalculator::Initialize()
     P = 0;
 }
 
-void TrigCalculator::Calculate()
+void TrigCalculator::Calculate(Triangle *tri)
 {
+    Initialize();
+
+    a = tri->a;
+    b = tri->b;
+    c = tri->c;
+    a1 = tri->a1;
+    b1 = tri->b1;
+    h = tri->h;
+    alpha = tri->alpha;
+    alpha_in_radians = tri->alpha_in_radians;
+    beta = tri->beta;
+    beta_in_radians = tri->beta_in_radians;
+
     bool everything_found = false;
 
     for(int i = 0; !everything_found; i++)
@@ -68,6 +80,19 @@ void TrigCalculator::Calculate()
             break;
         }
     }
+
+    tri->a = a;
+    tri->b = b;
+    tri->c = c;
+    tri->a1 = a1;
+    tri->b1 = b1;
+    tri->h = h;
+    tri->alpha = alpha;
+    tri->alpha_in_radians = alpha_in_radians;
+    tri->beta = beta;
+    tri->beta_in_radians = beta_in_radians;
+    tri->S = S;
+    tri->P = P;
 }
 
 void TrigCalculator::CalculateA()

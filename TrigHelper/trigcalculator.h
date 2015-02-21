@@ -1,9 +1,14 @@
 #ifndef TRIGCALCULATOR_H
 #define TRIGCALCULATOR_H
 
+#include "triangle.h"
+
 class TrigCalculator
 {
 public:
+    static void Calculate(Triangle *tri);
+
+private:
     static double a;
     static double b;
     static double c;
@@ -18,9 +23,6 @@ public:
     static double P;
 
     static void Initialize();
-    static void Calculate();
-
-private:
     static void CalculateA();
     static void CalculateB();
     static void CalculateC();

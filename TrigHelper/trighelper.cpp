@@ -2,6 +2,7 @@
 #include "trighelper.h"
 #include "ui_trighelper.h"
 #include "errorchecker.h"
+#include "triangle.h"
 #include <math.h>
 #include <QMessageBox>
 
@@ -9,18 +10,19 @@
 #define CALCULATE_BUTTON_TEXT "Calculate"
 #define RESET_BUTTON_TEXT "Reset"
 
+Triangle triangle;
+
 TrigHelper::TrigHelper(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TrigHelper)
+    ui(new Ui::TrigHelper),
+    triangle()
 {
     ui->setupUi(this);
-
-    TrigCalculator::Initialize();
 
     ui->S_display->setEnabled(false);
     ui->P_display->setEnabled(false);
 
-    Display();
+    Display(triangle);
 }
 
 TrigHelper::~TrigHelper()
@@ -28,55 +30,55 @@ TrigHelper::~TrigHelper()
     delete ui;
 }
 
-void TrigHelper::Display()
+void TrigHelper::SetValuesFromForm(Triangle *tri)
 {
-    ui->a_display->setText(QString::number(TrigCalculator::a));
-    ui->b_display->setText(QString::number(TrigCalculator::b));
-    ui->c_display->setText(QString::number(TrigCalculator::c));
-    ui->a1_display->setText(QString::number(TrigCalculator::a1));
-    ui->b1_display->setText(QString::number(TrigCalculator::b1));
-    ui->h_display->setText(QString::number(TrigCalculator::h));
-    ui->alpha_display->setText(QString::number(TrigCalculator::alpha));
-    ui->beta_display->setText(QString::number(TrigCalculator::beta));
-    ui->S_display->setText(QString::number(TrigCalculator::S));
-    ui->P_display->setText(QString::number(TrigCalculator::P));
+    tri->a = ui->a_display->text().toDouble();
+    tri->b = ui->b_display->text().toDouble();
+    tri->c = ui->c_display->text().toDouble();
+    tri->a1 = ui->a1_display->text().toDouble();
+    tri->b1 = ui->b1_display->text().toDouble();
+    tri->h = ui->h_display->text().toDouble();
+    tri->alpha = ui->alpha_display->text().toDouble();
+    tri->alpha_in_radians = tri->alpha * PI / 180;
+    tri->beta = ui->beta_display->text().toDouble();
+    tri->beta_in_radians = tri->beta * PI / 180;
 }
 
-void TrigHelper::AcceptValues()
+void TrigHelper::Display(Triangle tri)
 {
-    TrigCalculator::a = TrigHelper::ui->a_display->text().toDouble();
-    TrigCalculator::b = ui->b_display->text().toDouble();
-    TrigCalculator::c = ui->c_display->text().toDouble();
-    TrigCalculator::a1 = ui->a1_display->text().toDouble();
-    TrigCalculator::b1 = ui->b1_display->text().toDouble();
-    TrigCalculator::h = ui->h_display->text().toDouble();
-    TrigCalculator::alpha = ui->alpha_display->text().toDouble();
-    TrigCalculator::alpha_in_radians = TrigCalculator::alpha * PI / 180;
-    TrigCalculator::beta = ui->beta_display->text().toDouble();
-    TrigCalculator::beta_in_radians = TrigCalculator::beta * PI / 180;
+    ui->a_display->setText(QString::number(tri.a));
+    ui->b_display->setText(QString::number(tri.b));
+    ui->c_display->setText(QString::number(tri.c));
+    ui->a1_display->setText(QString::number(tri.a1));
+    ui->b1_display->setText(QString::number(tri.b1));
+    ui->h_display->setText(QString::number(tri.h));
+    ui->alpha_display->setText(QString::number(tri.alpha));
+    ui->beta_display->setText(QString::number(tri.beta));
+    ui->S_display->setText(QString::number(tri.S));
+    ui->P_display->setText(QString::number(tri.P));
 }
 
 void TrigHelper::on_calculate_button_clicked()
 {
     if(ui->calculate_button->text() == CALCULATE_BUTTON_TEXT)
     {
-        AcceptValues();
+        SetValuesFromForm(&triangle);
 
-        if(ErrorChecker::DisplayErrors())
+        if(ErrorChecker::DisplayErrors(triangle))
         {
-            TrigCalculator::Initialize();
+            triangle.ResetValues();
         }
         else
         {
-            TrigCalculator::Calculate();
+            TrigCalculator::Calculate(&triangle);
             ui->calculate_button->setText(RESET_BUTTON_TEXT);
         }
     }
     else
     {
-        TrigCalculator::Initialize();
+        triangle.ResetValues();
         ui->calculate_button->setText(CALCULATE_BUTTON_TEXT);
     }
 
-    Display();
+    Display(triangle);
 }

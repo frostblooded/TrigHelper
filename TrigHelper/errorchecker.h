@@ -1,11 +1,28 @@
 #ifndef ERRORCHECKER_H
 #define ERRORCHECKER_H
 
+#include "triangle.h"
+
 class ErrorChecker
 {
 public:
-    static bool DisplayErrors();
+    static bool DisplayErrors(Triangle);
 private:
+    static double a;
+    static double b;
+    static double c;
+    static double a1;
+    static double b1;
+    static double h;
+    static double alpha;
+    static double alpha_in_radians;
+    static double beta;
+    static double beta_in_radians;
+    static double S;
+    static double P;
+
+    static void Initialize();
+
     static bool NoInputIsGiven();
     static bool AValueIsNegative();
     static bool SidesAreImpossibleForRightTriangle();

@@ -60,14 +60,6 @@ bool ErrorChecker::AValueIsNegative()
     return a < 0 || b < 0 || c < 0 || a1 < 0 || b1 < 0 || h < 0 || alpha < 0 || beta < 0;
 }
 
-bool ErrorChecker::SumOfA1AndB1DoesntEqualC()
-{
-    if(a1 && b1 && c)
-        return a1 + b1 != c;
-    else
-        return false;
-}
-
 bool ErrorChecker::A1IsntSmallerThanA()
 {
     if(a1 && a)
@@ -94,20 +86,46 @@ bool ErrorChecker::AOrBIsSmallerThanH()
         return false;
 }
 
+bool ErrorChecker::A1OrB1IsntSmallerThanC()
+{
+    if(a1 && c)
+    {
+        if(a1 >= c)
+            return true;
+    }
+    else if(b1 && c)
+    {
+        if(b1 >= c)
+            return true;
+    }
+    else
+        return false;
+}
+
 bool ErrorChecker::OnlyAnglesAreEntered()
 {
     return alpha && beta && !a && !b && !c && !a1 && !b1 && !h;
 }
 
-bool ErrorChecker::CIsSmallerThanAOrB()
+bool ErrorChecker::AOrBIsntBiggerThanC()
 {
     if(c)
     {
         if(b)
-            return b > c;
+            return b >= c;
         else if(a)
-            return a > c;
+            return a >= c;
     }
+    else
+        return false;
+}
+
+bool ErrorChecker::AlphaOrBetaIs90()
+{
+    if(alpha)
+        return alpha == 90;
+    else if(beta)
+        return beta == 90;
 }
 
 bool ErrorChecker::AnglesDontEqual90()
@@ -142,12 +160,7 @@ bool ErrorChecker::DisplayErrors(Triangle tri)
     }
     else if(AValueIsNegative())
     {
-        QMessageBox::critical(NULL, "A value is invalid!", "One of the values that you entered is invalid! Please try again!");
-        return true;
-    }
-    else if(SumOfA1AndB1DoesntEqualC())
-    {
-        QMessageBox::critical(NULL, "Triangle is impossible!", "The sum of A1 and B1 must be equal C! Please try again!");
+        QMessageBox::critical(NULL, "A value is invalid!", "One of the values that you entered is negative! Please try again!");
         return true;
     }
     else if(A1IsntSmallerThanA())
@@ -165,14 +178,24 @@ bool ErrorChecker::DisplayErrors(Triangle tri)
         QMessageBox::critical(NULL, "Triangle is impossible!", "A1 and B1 must be bigger than H! Please try again!");
         return true;
     }
-    else if(CIsSmallerThanAOrB())
+    else if(AOrBIsntBiggerThanC())
     {
-        QMessageBox::critical(NULL, "Triangle is impossible!", "C can't be smaller than A or B! Please try again!");
+        QMessageBox::critical(NULL, "Triangle is impossible!", "A and B must be smaller than C! Please try again!");
+        return true;
+    }
+    else if(A1OrB1IsntSmallerThanC())
+    {
+        QMessageBox::critical(NULL, "Triangle is impossible!", "A1 and B1 must be smaller than C! Please try again!");
         return true;
     }
     else if(OnlyAnglesAreEntered())
     {
         QMessageBox::critical(NULL, "Only angles are given!", "This program can't calculate if only angles are given! Please try again!");
+        return true;
+    }
+    else if(AlphaOrBetaIs90())
+    {
+        QMessageBox::critical(NULL, "Invalid angles!", "Alpha and beta must be below 90 degrees! Please try again!");
         return true;
     }
     else if(AnglesDontEqual90())

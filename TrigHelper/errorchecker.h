@@ -26,12 +26,13 @@ private:
     static bool NoInputIsGiven();
     static bool MoreThan2ValuesAreEntered();
     static bool AValueIsNegative();
-    static bool SumOfA1AndB1DoesntEqualC();
     static bool A1IsntSmallerThanA();
     static bool B1IsntSmallerThanB();
     static bool AOrBIsSmallerThanH();
-    static bool CIsSmallerThanAOrB();
+    static bool AOrBIsntBiggerThanC();
+    static bool A1OrB1IsntSmallerThanC();
     static bool OnlyAnglesAreEntered();
+    static bool AlphaOrBetaIs90();
     static bool AnglesDontEqual90();
 };
 

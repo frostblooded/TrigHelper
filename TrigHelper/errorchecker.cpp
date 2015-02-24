@@ -126,6 +126,7 @@ bool ErrorChecker::AlphaOrBetaIs90()
         return alpha == 90;
     else if(beta)
         return beta == 90;
+    return false;
 }
 
 bool ErrorChecker::AnglesDontEqual90()
